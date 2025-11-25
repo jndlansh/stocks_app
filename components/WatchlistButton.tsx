@@ -71,4 +71,4 @@ const WatchlistButton = ({
   );
 };
 
-export default WatchlistButton;
+export default WatchlistButton; 
