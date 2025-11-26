@@ -15,7 +15,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Stocker",
-  description: "",
+  description: "A modern stocks tracking app that provides real-time market data, interactive price charts, company details, and personalized watchlists — all with a clean and responsive UI.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
