@@ -12,8 +12,9 @@ const Layout = async ({children}:{children : React.ReactNode}) => {
   return (
     <main className="auth-layout">
         <section className="auth-left-section scrollbar-hide-default">
-            <Link href='/' className="auth-logo">
-                <Image src="/assets/icons/logo.svg" alt='logo' width={140} height={32} className="h-8 w-auto"/>
+            <Link href='/' className="auth-logo flex items-center gap-3 mb-8">
+                <Image src="/assets/icons/12.png" alt='logo' width={140} height={32} className="h-8 w-auto"/>
+                <p className="text-gray-100 text-lg font-semibold">Stocker</p>
             </Link>
             <div className="pb-6 lg:pb-8 flex-1">{children}</div>
         </section>
