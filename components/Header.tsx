@@ -10,9 +10,12 @@ const Header = async ({user} : {user : User}) => {
   return (
     <header className="sticky top-0 header">
         <div className=" flex container header-wrapper">
-            <Link href='/'>
-                <Image src="/assets/icons/logo.svg" alt="Signalist logo" width={140} height={32} className='h-8 w-auto cursor-pointer' />
-            </Link> 
+        <div className="flex items-center gap-3">
+          <Link href='/'>
+            <Image src="/assets/icons/12.png" alt="Signalist logo" width={140} height={32} className='h-12 w-auto cursor-pointer' />
+          </Link>
+          <p className="text-lg font-semibold text-gray-100">Stocker</p>
+        </div>
             <nav className='hidden sm:block'>
                 <NavItems initialStocks={initialStocks}/>
             </nav>
