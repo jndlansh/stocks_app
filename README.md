@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stocker
+
+Stocker is a Next.js 14 app for exploring market data, visualizing stocks with TradingView widgets, and managing personal watchlists.
+
+## Features
+
+- Next.js App Router with server components and suspense-friendly layouts.
+- Tailwind CSS design system with custom OKLCH color themes.
+- Live TradingView widgets for symbol info, candlestick, baseline, technical analysis, profile, and fundamentals.
+- Credential-based authentication backed by Better Auth + MongoDB.
+- Watchlist management with optimistic UI and toast feedback.
+- Inngest-powered background jobs and email notifications via Nodemailer.
+
+## Tech Stack
+
+- **Frontend:** Next.js 14, React Server Components, Tailwind CSS, Geist font.
+- **Data & Services:** Finnhub APIs, TradingView widget embeds, MongoDB via Mongoose.
+- **Auth:** Better Auth, JWT sessions, middleware guards.
+- **Tooling:** TypeScript, ESLint, Prettier, PostCSS, Turbopack, Sonner toasts.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Copy env template and fill secrets
+cp .env.example .env.local
+
+# 3. Run database (e.g. MongoDB Atlas or local mongodb)
+
+# 4. Start dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Required Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Configure at least:
 
-## Learn More
+```
+NEXT_PUBLIC_FINNHUB_API_KEY=
+MONGODB_URI=
+BETTER_AUTH_SECRET=
+EMAIL_SERVER_HOST=
+EMAIL_SERVER_PORT=
+EMAIL_SERVER_USER=
+EMAIL_SERVER_PASSWORD=
+EMAIL_FROM=
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/                # App Router layouts & pages
+components/         # UI and feature components (TradingView widgets, forms, buttons)
+lib/                # Utilities, constants, server actions, external clients
+database/           # Mongo connection and Mongoose models
+hooks/              # Custom React hooks
+middleware/         # Auth and routing middleware
+public/             # Static assets (icons, images)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Scripts
 
-## Deploy on Vercel
+```bash
+npm run dev      # Start dev server (Turbopack)
+npm run build    # Build production bundle
+npm run start    # Start production server
+npm run lint     # Lint and type-check
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Testing & Quality
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- ESLint config lives in `eslint.config.mjs`.
+- TypeScript strictness enforced via `tsconfig.json`.
+- Use `npm run lint` before PRs; add vitest/jest if unit tests are needed.
+
+## Deployment
+
+Deploy to Vercel or any Node.js hosting:
+
+```bash
+npm run build
+npm run start
+```
+
+Ensure environment variables are supplied on your hosting platform, and MongoDB is reachable from the production environment.
